@@ -4,6 +4,10 @@ import { LineupComponent } from './index';
 export const LineupRoutes: Route[] = [
   {
     path: '',
-    component: LineupComponent
+    component: LineupComponent,
+  },
+  {
+    path:'kickball',
+    component:LineupComponent,
   }
 ];
