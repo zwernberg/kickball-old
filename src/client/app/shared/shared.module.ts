@@ -15,7 +15,7 @@ import { Player,PlayerService } from './player/index';
 @NgModule({
   imports: [CommonModule, RouterModule],
   declarations: [ToolbarComponent, NavbarComponent],
-  exports: [ToolbarComponent, NavbarComponent,
+  exports: [ToolbarComponent, NavbarComponent, Player,PlayerService,
     CommonModule, FormsModule, RouterModule]
 })
 export class SharedModule {
