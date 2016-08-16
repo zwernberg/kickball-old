@@ -9,6 +9,7 @@ import { Player, PlayerService } from '../shared/index';
   selector: 'kickball-lineup',
   templateUrl: 'lineup.component.html',
   styleUrls: ['lineup.component.css'],
+  providers: [PlayerService]
 })
 
 export class LineupComponent implements OnInit {
