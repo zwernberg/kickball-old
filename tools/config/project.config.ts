@@ -33,6 +33,14 @@ export class ProjectConfig extends SeedConfig {
 
     /* Add to or override NPM module configurations: */
     // this.mergeObject(this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false });
+
+    // Add Dragula
+
+    // Development
+    this.SYSTEM_CONFIG.paths['dragula'] = `${this.APP_BASE}node_modules/dragula/dist/dragula.min`;
+
+    // Production
+    this.SYSTEM_BUILDER_CONFIG.paths['dragula'] = `node_modules/dragula/dist/dragula.min.js`;
   }
 
 }

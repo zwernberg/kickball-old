@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Player, PlayerService } from '../shared/index';
+import {Dragula, DragulaService} from 'ng2-dragula/ng2-dragula';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -9,7 +10,8 @@ import { Player, PlayerService } from '../shared/index';
   selector: 'kickball-lineup',
   templateUrl: 'lineup.component.html',
   styleUrls: ['lineup.component.css'],
-  providers: [PlayerService]
+  directives: [ Dragula ],
+  providers: [ DragulaService ]
 })
 
 export class LineupComponent implements OnInit {
@@ -26,7 +28,17 @@ export class LineupComponent implements OnInit {
    *
    * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor(private playerService: PlayerService) {}
+  constructor(private playerService: PlayerService, private dragulaService: DragulaService) {
+    this.dragulaService.setOptions('first-bag', {
+      removeOnSpill:true
+    });
+
+    dragulaService.dropModel.subscribe((value:any) => {
+      console.log(`drag: ${value[0]}`);
+      this.onDropModel(value.slice(1));
+    });
+
+  }
 
   ngOnInit() {
     this.getPlayers();
@@ -46,7 +58,8 @@ export class LineupComponent implements OnInit {
     this.playerService.remove(player);
   }
 
-  updatePlayers(event: Event) {
-    console.log('test');
+  private onDropModel(args:any) {
+    this.playerService.updateLineup(this.players);
   }
+
 }

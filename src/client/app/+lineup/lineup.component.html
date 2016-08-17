@@ -5,10 +5,23 @@
 
 
   <ul class="list-group">
-      <div *ngFor="let player of players" class="list-group-item" >
-        {{player.name}}
+      <div class='container' [dragula]='"first-bag"' [dragulaModel]='players'>
+        <div *ngFor="let player of players" class="list-group-item">
+          {{player.name}}
 
-      <button  type="button" (click)="removePlayer(player)" class="btn btn-danger">Remove Player</button>
+        <button  type="button" (click)="removePlayer(player)" class="btn btn-danger">Remove Player</button>
+        </div>
       </div>
   </ul>
 </div>
+
+      <!--<div>
+        <div class='wrapper'>
+          <div class='container' [dragula]='"first-bag"'>
+            <div>Drag/drop item 1</div>
+          </div>
+          <div class='container' [dragula]='"first-bag"'>
+            <div>Drag/drop item 2</div>
+          </div>
+        </div>
+      </div>-->

@@ -25,6 +25,11 @@ export class PlayerService {
 		this.updateStorage();
 	}
 
+	updateLineup(lineup:Player[]) {
+		this.players = lineup;
+		this.updateStorage();
+	}
+
 	private updateStorage() {
 		localStorage.setItem('kickball', JSON.stringify(this.players));
 	}
